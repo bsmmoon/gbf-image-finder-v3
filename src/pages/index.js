@@ -6,13 +6,16 @@ import SEO from "../components/seo"
 import Button from "react-bootstrap/Button"
 
 import ImageLoader from "../components/image-loader"
+// import Data from "../content/data.json"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Button>HI</Button>
     <div>
-      <ImageLoader />
+      <ImageLoader props={{
+        id: "3040053000"
+      }} />
     </div>
   </Layout>
 )
