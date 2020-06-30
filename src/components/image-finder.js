@@ -20,7 +20,8 @@ class ImageFinder extends React.Component {
     })
   }
   
-  submit() {
+  submit(event) {
+    event.preventDefault()
     this.props.updateData(this.state.data)
   }
 
@@ -28,14 +29,22 @@ class ImageFinder extends React.Component {
     return <div>
       <Form> 
         <Form.Group>
-          <Form.Label>ID</Form.Label>
-          <Form.Control type="text"
+          <Form.Control
+            type="text"
+            size="sm"
             name="id"
+            placeholder="ID (ex. 3040053000)"
+            value={this.state.data.id}
             onChange={this.handleChange.bind(this)}
           />
         </Form.Group>
+        <Button
+          type="submit"
+          size="sm"
+          onClick={this.submit.bind(this)}>
+          Submit
+        </Button>
       </Form>
-      <Button onClick={this.submit.bind(this)}>Submit</Button>
       <br/>
     </div>
   }
