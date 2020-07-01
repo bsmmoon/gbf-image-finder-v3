@@ -8,21 +8,21 @@ class ImageFinder extends React.Component {
     super(props)
 
     this.state = {
-      data: props.data
+      search: props.search
     }
   }
 
   handleChange(event) {
-    let data =  JSON.parse(JSON.stringify(this.state.data))
-    data[event.target.name] = event.target.value
+    let search =  JSON.parse(JSON.stringify(this.state.search))
+    search[event.target.name] = event.target.value
     this.setState({
-      data: data
+      search
     })
   }
   
   submit(event) {
     event.preventDefault()
-    this.props.updateData(this.state.data)
+    this.props.updateSearch(this.state.search)
   }
 
   render() {
@@ -34,7 +34,7 @@ class ImageFinder extends React.Component {
             size="sm"
             name="id"
             placeholder="ID (ex. 3040053000)"
-            value={this.state.data.id}
+            value={this.state.search.id}
             onChange={this.handleChange.bind(this)}
           />
         </Form.Group>

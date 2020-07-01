@@ -7,18 +7,18 @@ import ImageFinder from "../components/image-finder"
 import ImageLoader from "../components/image-loader"
 import UrlBuilder from "../components/url-builder"
 
-// import Data from "../content/data.json"
-
+import Data from "../content/data.json"
 
 class IndexPage extends React.Component {
   state = {
-    data: {
+    search: {
       id: "3040053000"
-    }
+    },
+    data: Data
   }
 
-  updateData(data) {
-    this.setState({ data: JSON.parse(JSON.stringify(data)) })
+  updateSearch(search) {
+    this.setState({ search })
   }
 
   render() {
@@ -26,9 +26,9 @@ class IndexPage extends React.Component {
       <SEO title="Home" />
       <div>
         <ImageFinder
-          data={this.state.data}
-          updateData={this.updateData.bind(this)} />
-        <ImageLoader url={UrlBuilder(this.state.data)} />
+          search={this.state.search} // remove this?
+          updateSearch={this.updateSearch.bind(this)} />
+        <ImageLoader url={UrlBuilder(this.state.search)} />
       </div>
     </Layout>
   }
