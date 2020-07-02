@@ -13,8 +13,8 @@ const TYPE_QUEST="quest/scene/character/body"
 // const TYPE_PLAYABLE="assets/npc/zoom"
 const EXTENSION_PNG="png"
 
-const UrlBuilder = ({ id }) => {
-  let url=`${HOST}/${REGION_JP}/img/sp/${TYPE_QUEST}/${id}.${EXTENSION_PNG}`
+const UrlBuilder = ({ id, tag }) => {
+  let url=`${HOST}/${REGION_JP}/img/sp/${TYPE_QUEST}/${id}${!!tag ? `_${tag}` : ''}.${EXTENSION_PNG}`
   return url
 }
 
