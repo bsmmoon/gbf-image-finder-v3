@@ -3,7 +3,7 @@ import React from "react"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 
-import Data from "../content/data.json"
+import Playable from "../content/playable.json"
 
 import _ from "lodash"
 
@@ -12,13 +12,45 @@ class ImageFinder extends React.Component {
     super(props)
 
     this.state = {
-      search: props.search
+      search: {
+        category: "SSR",
+        id: "3040053000"
+      }
     }
+  }
+
+  // Set default values when category changes
+  onCategoryChange(search, value) {
+    switch (value) {
+      case "R":
+        search.id = "3020016000"
+        break
+      case "SR":
+        search.id = "3030019000"
+        break
+      case "SSR":
+        search.id = "3040040000"
+        break
+      default:
+    }
+    return search
   }
 
   handleChange(event) {
     let search = JSON.parse(JSON.stringify(this.state.search))
-    search[event.target.name] = event.target.value
+    
+    const name = event.target.name
+    const value = event.target.value
+    
+    search[name] = value
+
+    switch(name) {
+      case "category":
+        search = this.onCategoryChange(search, value)
+        break
+      default:
+    }
+
     this.setState({
       search
     })
@@ -30,10 +62,47 @@ class ImageFinder extends React.Component {
   }
 
   render() {
+    const search = JSON.parse(JSON.stringify(this.state.search))
+
     return <div>
-      {JSON.stringify(Data)}
-      {JSON.stringify(this.state)}
+      {JSON.stringify(this.state)} <br/><br />
+      {JSON.stringify(Playable)} <br /><br />
+      {JSON.stringify(Playable[search.category])}
       <Form> 
+        <Form.Group>
+          <Form.Control as="select"
+            size="sm"
+            name="category"
+            defaultValue={search.category}
+            onChange={this.handleChange.bind(this)}
+          >
+            {
+              _.map(
+                _.keys(Playable), (category) => (
+                  <option>{category}</option>
+                )
+              )
+            }
+          </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Control as="select"
+            size="sm"
+            name="id"
+            defaultValue={search.id}
+            onChange={this.handleChange.bind(this)}
+          >
+            {
+              _.map(
+                _.keys(Playable[search.category]), (id) => (
+                  <option value={id}>
+                   {Playable[search.category][id]}
+                  </option>
+                )
+              )
+            }
+          </Form.Control>
+        </Form.Group>
         <Form.Group>
           <Form.Control type="text"
             size="sm"
@@ -42,18 +111,6 @@ class ImageFinder extends React.Component {
             value={this.state.search.id}
             onChange={this.handleChange.bind(this)}
           />
-        </Form.Group>
-        <Form.Group>
-          <Form.Control as="select"
-            size="sm"
-            name="tag"
-            onChange={this.handleChange.bind(this)}
-          >
-            <option disabled selected value />
-            { _.map(Data.tags, (tag) => (
-              <option key={tag}>{tag}</option>
-            )) }
-          </Form.Control>
         </Form.Group>
         <Button
           type="submit"
