@@ -12,7 +12,8 @@ class ImageFinder extends React.Component {
     super(props)
 
     this.state = {
-      search: JSON.parse(JSON.stringify(props.search))
+      search: JSON.parse(JSON.stringify(props.search)),
+      hideDebug: true
     }
   }
 
@@ -58,13 +59,21 @@ class ImageFinder extends React.Component {
     this.props.updateSearch(this.state.search)
   }
 
+  toggleDebug() {
+    this.setState({hideDebug: !this.state.hideDebug})
+  }
+
   render() {
     const search = JSON.parse(JSON.stringify(this.state.search))
 
     return <div>
-      {JSON.stringify(this.state)} <br/><br />
-      {JSON.stringify(Playable)} <br /><br />
-      {JSON.stringify(Playable[search.category])}
+      <Button size="sm" onClick={this.toggleDebug.bind(this)}>Debug</Button>
+      <div hidden={this.state.hideDebug}>
+        {JSON.stringify(this.state)} <br/><br/>
+        {JSON.stringify(Playable)} <br/><br/>
+        {JSON.stringify(Playable[search.category])}
+      </div>
+      <br/><br/>
       <Form> 
         <Form.Group>
           <Form.Control as="select"
