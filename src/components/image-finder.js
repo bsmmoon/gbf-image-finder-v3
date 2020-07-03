@@ -12,10 +12,7 @@ class ImageFinder extends React.Component {
     super(props)
 
     this.state = {
-      search: {
-        category: "SSR",
-        id: "3040053000"
-      }
+      search: JSON.parse(JSON.stringify(props.search))
     }
   }
 
@@ -85,6 +82,7 @@ class ImageFinder extends React.Component {
             }
           </Form.Control>
         </Form.Group>
+        
         <Form.Group>
           <Form.Control as="select"
             size="sm"
@@ -103,6 +101,7 @@ class ImageFinder extends React.Component {
             }
           </Form.Control>
         </Form.Group>
+
         <Form.Group>
           <Form.Control type="text"
             size="sm"
@@ -112,6 +111,20 @@ class ImageFinder extends React.Component {
             onChange={this.handleChange.bind(this)}
           />
         </Form.Group>
+
+        <Form.Group>
+          <Form.Control as="select"
+            size="sm"
+            name="uncap"
+            defaultValue={search.uncap}
+            onChange={this.handleChange.bind(this)}
+          >
+            <option value="01">★</option>
+            <option value="02">★★★</option>
+            <option value="03">★★★★★</option>
+          </Form.Control>
+        </Form.Group>
+
         <Button
           type="submit"
           size="sm"

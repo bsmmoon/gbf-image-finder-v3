@@ -10,7 +10,9 @@ import UrlBuilder from "../components/url-builder"
 class IndexPage extends React.Component {
   state = {
     search: {
-      id: "3040053000"
+      id: "3040053000",
+      category: "SSR",
+      uncap: "01"
     }
   }
 
