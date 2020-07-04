@@ -5,7 +5,6 @@
  * Playable:
  * http://game-a.granbluefantasy.jp/assets_en/img/sp/assets/npc/zoom/3040053000_01.png
  */
-
 const HOST="http://game-a.granbluefantasy.jp"
 const REGION_JP="assets"
 // const REGION_EN="assets_en"
@@ -13,11 +12,10 @@ const REGION_JP="assets"
 const TYPE_PLAYABLE="assets/npc/zoom"
 const EXTENSION_PNG="png"
 
-const UrlBuilder = ({ id, uncap }) => {
-  let suffix = `${!!uncap ? `_${uncap}` : ''}`
-  let url=`${HOST}/${REGION_JP}/img/sp/${TYPE_PLAYABLE}/${id}${suffix}.${EXTENSION_PNG}`
+const UrlBuilder = (image) => {
+  let suffix = `${!!image.uncap ? `_${image.uncap}` : ''}`
+  let url=`${HOST}/${REGION_JP}/img/sp/${TYPE_PLAYABLE}/${image.id}${suffix}.${EXTENSION_PNG}`
   return url
 }
 
 export default UrlBuilder
-
