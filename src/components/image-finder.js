@@ -13,7 +13,8 @@ class ImageFinder extends React.Component {
 
     this.state = {
       search: JSON.parse(JSON.stringify(props.search)),
-      hideDebug: true
+      hideDebug: true,
+      searchById: false
     }
   }
 
@@ -63,6 +64,10 @@ class ImageFinder extends React.Component {
     this.setState({hideDebug: !this.state.hideDebug})
   }
 
+  toggleSearch() {
+    this.setState({searchById: !this.state.searchById})
+  }
+
   render() {
     const search = JSON.parse(JSON.stringify(this.state.search))
 
@@ -74,9 +79,16 @@ class ImageFinder extends React.Component {
         {JSON.stringify(Playable[search.category])}
       </div>
       <br/><br/>
-      <Form> 
+      <Form>
+        <Form.Check
+          type="switch"
+          id="manual"
+          label="Search by ID"
+          onClick={this.toggleSearch.bind(this)}
+        />
         <Form.Group>
           <Form.Control as="select"
+            hidden={this.state.searchById}
             size="sm"
             name="category"
             defaultValue={search.category}
@@ -94,6 +106,7 @@ class ImageFinder extends React.Component {
         
         <Form.Group>
           <Form.Control as="select"
+            hidden={this.state.searchById}
             size="sm"
             name="id"
             defaultValue={search.id}
@@ -113,6 +126,7 @@ class ImageFinder extends React.Component {
 
         <Form.Group>
           <Form.Control type="text"
+            disabled={!this.state.searchById}
             size="sm"
             name="id"
             placeholder="ID (ex. 3040053000)"
