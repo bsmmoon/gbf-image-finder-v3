@@ -2,7 +2,6 @@ import React from "react"
 import { connect } from "react-redux"
 
 import {
-  setDebug,
   setSearchById,
   setSearch,
   setImage
@@ -63,13 +62,6 @@ const ImageFinder = ({
   search,
   searchById
 }) => <div>
-  <Button size="sm" onClick={() => dispatch(setDebug(!debug))}>Debug</Button>
-  <div hidden={!debug}>
-    {JSON.stringify({debug, search, searchById})} <br/><br/>
-    {JSON.stringify(Playable)} <br/><br/>
-    {JSON.stringify(Playable[search.category])}
-  </div>
-  <br/><br/>
   <Form>
     <Form.Check
       type="switch"
