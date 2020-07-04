@@ -25,9 +25,9 @@ export const setSearchById = (searchById) => ({
 })
 
 const SET_SEARCH = "SET_SEARCH"
-export const setSearch = (search, key, value) => {
-  search[key] = value
-  return { type: SET_SEARCH, search }
+export const setSearch = (search, options={}) => {
+  search = JSON.parse(JSON.stringify(search))
+  return { type: SET_SEARCH, search, options }
 }
 
 const SET_IMAGE = "SET_IMAGE"
@@ -44,7 +44,9 @@ export default (state = initialState, action) => {
     case SET_SEARCH_BY_ID:
       return { ...state, searchById: action.searchById }
     case SET_SEARCH:
-      return { ...state, search: action.search }
+      let search = action.search
+      let image = action.options.load ? search : state.image
+      return { ...state, search, image }
     case SET_IMAGE:
       return { ...state, image: action.search }
     default:

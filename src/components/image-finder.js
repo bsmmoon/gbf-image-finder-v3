@@ -9,6 +9,7 @@ import {
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
+import InputGroup from "react-bootstrap/InputGroup"
 
 import Playable from "../content/playable.json"
 
@@ -46,14 +47,26 @@ const handleChange = (dispatch, search, event) => {
     default:
   }
 
-  dispatch(setSearch(
-    search
-  ))
+  dispatch(setSearch(search))
 }
 
 const submit = (dispatch, search, event) => {
   event.preventDefault()
   dispatch(setImage(search))
+}
+
+const prevImage = (dispatch, search) => {
+  let ids = _.keys(Playable[search.category])
+  let id = ids[ids.indexOf(search.id) - 1]
+  if (!!id) search.id = id
+  dispatch(setSearch(search, { load: true }))
+}
+
+const nextImage = (dispatch, search) => {
+  let ids = _.keys(Playable[search.category])
+  let id = ids[ids.indexOf(search.id) + 1]
+  if (!!id) search.id = id
+  dispatch(setSearch(search, { load: true }))
 }
 
 const ImageFinder = ({
@@ -63,12 +76,15 @@ const ImageFinder = ({
   searchById
 }) => <div>
   <Form>
-    <Form.Check
-      type="switch"
-      id="manual"
-      label="Search by ID"
-      onClick={() => dispatch(setSearchById(!searchById))}
-    />
+    <Form.Group>
+      <Form.Check
+        type="switch"
+        id="manual"
+        label="Search by ID"
+        onClick={() => dispatch(setSearchById(!searchById))}
+      />
+    </Form.Group>
+
     <Form.Group>
       <Form.Control as="select"
         hidden={searchById}
@@ -88,23 +104,34 @@ const ImageFinder = ({
     </Form.Group>
     
     <Form.Group>
-      <Form.Control as="select"
-        hidden={searchById}
-        size="sm"
-        name="id"
-        defaultValue={search.id}
-        onChange={handleChange.bind(this, dispatch, search)}
-      >
-        {
-          _.map(
-            _.keys(Playable[search.category]), (id) => (
-              <option value={id}>
-               {Playable[search.category][id]}
-              </option>
+      <InputGroup hidden={searchById}>
+        <InputGroup.Prepend>
+          <Button size="sm"
+            onClick={() => prevImage(dispatch, search)}
+          >{"<"}</Button>
+        </InputGroup.Prepend>
+        <Form.Control as="select" 
+          size="sm"
+          name="id"
+          value={search.id}
+          onChange={handleChange.bind(this, dispatch, search)}
+        >
+          {
+            _.map(
+              _.keys(Playable[search.category]), (id) => (
+                <option value={id}>
+                 {Playable[search.category][id]}
+                </option>
+              )
             )
-          )
-        }
-      </Form.Control>
+          }
+        </Form.Control>
+        <InputGroup.Append>
+          <Button size="sm"
+            onClick={() => nextImage(dispatch, search)}
+          >{">"}</Button>
+        </InputGroup.Append>
+      </InputGroup>
     </Form.Group>
 
     <Form.Group>
@@ -131,13 +158,15 @@ const ImageFinder = ({
       </Form.Control>
     </Form.Group>
 
-    <Button
-      type="submit"
-      size="sm"
-      onClick={submit.bind(this, dispatch, search)}
-    >
-      Submit
-    </Button>
+    <Form.Group>
+      <Button
+        type="submit"
+        size="sm"
+        onClick={submit.bind(this, dispatch, search)}
+      >
+        Submit
+      </Button>
+    </Form.Group>
   </Form>
   <br/>
 </div>
