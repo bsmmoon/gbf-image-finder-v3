@@ -105,11 +105,6 @@ const ImageFinder = ({
     
     <Form.Group>
       <InputGroup hidden={searchById}>
-        <InputGroup.Prepend>
-          <Button size="sm"
-            onClick={() => prevImage(dispatch, search)}
-          >{"<"}</Button>
-        </InputGroup.Prepend>
         <Form.Control as="select" 
           size="sm"
           name="id"
@@ -126,6 +121,11 @@ const ImageFinder = ({
             )
           }
         </Form.Control>
+        <InputGroup.Append>
+          <Button size="sm"
+            onClick={() => prevImage(dispatch, search)}
+          >{"<"}</Button>
+        </InputGroup.Append>
         <InputGroup.Append>
           <Button size="sm"
             onClick={() => nextImage(dispatch, search)}
@@ -159,7 +159,7 @@ const ImageFinder = ({
     </Form.Group>
 
     <Form.Group>
-      <Button
+      <Button block
         type="submit"
         size="sm"
         onClick={submit.bind(this, dispatch, search)}
