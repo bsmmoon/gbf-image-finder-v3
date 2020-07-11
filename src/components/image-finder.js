@@ -121,15 +121,17 @@ const ImageFinder = ({
             )
           }
         </Form.Control>
+        &nbsp;
         <InputGroup.Append>
           <Button size="sm"
             onClick={() => shiftImage(dispatch, search, -1)}
-          >{"<"}</Button>
+          >&nbsp;{"<"}&nbsp;</Button>
         </InputGroup.Append>
+        &nbsp;
         <InputGroup.Append>
           <Button size="sm"
             onClick={() => shiftImage(dispatch, search, 1)}
-          >{">"}</Button>
+          >&nbsp;{">"}&nbsp;</Button>
         </InputGroup.Append>
       </InputGroup>
     </Form.Group>
@@ -157,15 +159,17 @@ const ImageFinder = ({
           <option value="02">★★★</option>
           <option value="03">★★★★★</option>
         </Form.Control>
+        &nbsp;
         <InputGroup.Append>
           <Button size="sm"
             onClick={() => shiftUncap(dispatch, search, -1)}
-          >{"<"}</Button>
+          >&nbsp;{"<"}&nbsp;</Button>
         </InputGroup.Append>
+        &nbsp;
         <InputGroup.Append>
           <Button size="sm"
             onClick={() => shiftUncap(dispatch, search, 1)}
-          >{">"}</Button>
+          >&nbsp;{">"}&nbsp;</Button>
         </InputGroup.Append>
       </InputGroup>
     </Form.Group>
