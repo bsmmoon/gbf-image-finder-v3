@@ -55,16 +55,9 @@ const submit = (dispatch, search, event) => {
   dispatch(setImage(search))
 }
 
-const prevImage = (dispatch, search) => {
+const shiftImage = (dispatch, search, shift) => {
   let ids = _.keys(Playable[search.category])
-  let id = ids[ids.indexOf(search.id) - 1]
-  if (!!id) search.id = id
-  dispatch(setSearch(search, { load: true }))
-}
-
-const nextImage = (dispatch, search) => {
-  let ids = _.keys(Playable[search.category])
-  let id = ids[ids.indexOf(search.id) + 1]
+  let id = ids[ids.indexOf(search.id) + shift]
   if (!!id) search.id = id
   dispatch(setSearch(search, { load: true }))
 }
@@ -123,12 +116,12 @@ const ImageFinder = ({
         </Form.Control>
         <InputGroup.Append>
           <Button size="sm"
-            onClick={() => prevImage(dispatch, search)}
+            onClick={() => shiftImage(dispatch, search, -1)}
           >{"<"}</Button>
         </InputGroup.Append>
         <InputGroup.Append>
           <Button size="sm"
-            onClick={() => nextImage(dispatch, search)}
+            onClick={() => shiftImage(dispatch, search, 1)}
           >{">"}</Button>
         </InputGroup.Append>
       </InputGroup>
