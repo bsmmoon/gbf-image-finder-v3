@@ -62,6 +62,13 @@ const shiftImage = (dispatch, search, shift) => {
   dispatch(setSearch(search, { load: true }))
 }
 
+const shiftUncap = (dispatch, search, shift) => {
+  let uncaps = ["01", "02", "03"]
+  let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
+  if (!!uncap) search.uncap = uncap
+  dispatch(setSearch(search, { load: true }))
+}
+
 const ImageFinder = ({
   dispatch,
   debug,
@@ -139,16 +146,28 @@ const ImageFinder = ({
     </Form.Group>
 
     <Form.Group>
-      <Form.Control as="select"
-        size="sm"
-        name="uncap"
-        defaultValue={search.uncap}
-        onChange={handleChange.bind(this, dispatch, search)}
-      >
-        <option value="01">★</option>
-        <option value="02">★★★</option>
-        <option value="03">★★★★★</option>
-      </Form.Control>
+      <InputGroup>
+        <Form.Control as="select"
+          size="sm"
+          name="uncap"
+          value={search.uncap}
+          onChange={handleChange.bind(this, dispatch, search)}
+        >
+          <option value="01">★</option>
+          <option value="02">★★★</option>
+          <option value="03">★★★★★</option>
+        </Form.Control>
+        <InputGroup.Append>
+          <Button size="sm"
+            onClick={() => shiftUncap(dispatch, search, -1)}
+          >{"<"}</Button>
+        </InputGroup.Append>
+        <InputGroup.Append>
+          <Button size="sm"
+            onClick={() => shiftUncap(dispatch, search, 1)}
+          >{">"}</Button>
+        </InputGroup.Append>
+      </InputGroup>
     </Form.Group>
 
     <Form.Group>
