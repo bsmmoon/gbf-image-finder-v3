@@ -50,22 +50,27 @@ const handleChange = (dispatch, search, event) => {
   dispatch(setSearch(search))
 }
 
-const submit = (dispatch, search, event) => {
+const submit = (dispatch, search, image, event) => {
   event.preventDefault()
+  if (JSON.stringify(search) === JSON.stringify(image)) return
   dispatch(setImage(search))
 }
 
 const shiftImage = (dispatch, search, shift) => {
   let ids = _.keys(Playable[search.category])
   let id = ids[ids.indexOf(search.id) + shift]
-  if (!!id) search.id = id
+  if (!id) return
+
+  search.id = id
   dispatch(setSearch(search, { load: true }))
 }
 
 const shiftUncap = (dispatch, search, shift) => {
   let uncaps = ["01", "02", "03"]
   let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
-  if (!!uncap) search.uncap = uncap
+  if (!uncap) return
+
+  search.uncap = uncap
   dispatch(setSearch(search, { load: true }))
 }
 
@@ -73,6 +78,7 @@ const ImageFinder = ({
   dispatch,
   debug,
   search,
+  image,
   searchById
 }) => <div>
   <Form>
@@ -178,7 +184,7 @@ const ImageFinder = ({
       <Button block
         type="submit"
         size="sm"
-        onClick={submit.bind(this, dispatch, search)}
+        onClick={submit.bind(this, dispatch, search, image)}
       >
         Submit
       </Button>
@@ -190,5 +196,6 @@ const ImageFinder = ({
 export default connect(state => ({
   debug: state.app.debug,
   search: state.app.search,
+  image: state.app.image,
   searchById: state.app.searchById
 }), null) (ImageFinder)

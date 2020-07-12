@@ -5,24 +5,13 @@ import { setDebug } from "../state/app"
 
 import Button from "react-bootstrap/Button"
 
-const Debug = ({
-  dispatch,
-  debug,
-  searchById,
-  search,
-  image,
-}) => (
+const Debug = ({ dispatch, state }) => (
   <div>
-    <Button size="sm" onClick={() => dispatch(setDebug(!debug))}>Debug</Button>
+    <Button size="sm" onClick={() => dispatch(setDebug(!state.debug))}>Debug</Button>
     <br/>
-    <div hidden={!debug}>
+    <div hidden={!state.debug}>
       {
-        JSON.stringify({
-          debug,
-          searchById,
-          search,
-          image
-        })
+        JSON.stringify(state)
       }
     </div>
     <br/>
@@ -30,8 +19,12 @@ const Debug = ({
 )
 
 export default connect(state => ({
-  debug: state.app.debug,
-  searchById: state.app.searchById,
-  search: state.app.search,
-  image: state.app.image,
+  state: {
+    debug: state.app.debug,
+    searchById: state.app.searchById,
+    loading: state.app.loading,
+    notFound: state.app.notFound,
+    search: state.app.search,
+    image: state.app.image,
+  }
 }))(Debug)
