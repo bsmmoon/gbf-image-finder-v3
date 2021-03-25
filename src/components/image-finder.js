@@ -7,12 +7,12 @@ import {
 } from "../state/app"
 
 import {
-  handleChange,
   submit,
 } from "../helpers/search_helper"
 
 import Rarity from "./rarity"
 import Character from "./character"
+import CharacterId from "./character_id"
 import Uncap from "./uncap"
 
 import Button from "react-bootstrap/Button"
@@ -49,16 +49,7 @@ const ImageFinder = ({
       <Character />
     </div>
 
-    <Form.Group>
-      <Form.Control type="text"
-        disabled={!searchById}
-        size="sm"
-        name="id"
-        placeholder="ID (ex. 3040053000)"
-        value={search.id}
-        onChange={handleChange.bind(this, dispatch, search)}
-      />
-    </Form.Group>
+    <CharacterId />
 
     <Uncap />
 
