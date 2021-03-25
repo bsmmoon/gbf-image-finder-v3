@@ -7,6 +7,7 @@ const DEFAULT = {
 
 const initialState = {
   debug: false,
+  dialogue: false,
   searchById: false,
   loading: false,
   notFound: false,
@@ -47,6 +48,11 @@ export const setImage = (search) => ({
   type: SET_IMAGE, search
 })
 
+const SET_STATE = "SET_STATE"
+export const setState = (state) => ({
+  type: SET_STATE, state
+})
+
 // REDUCER
 
 export default (state = initialState, action) => {
@@ -83,6 +89,8 @@ export default (state = initialState, action) => {
         loading: true,
         notFound: false,
       }
+    case SET_STATE:
+      return { ...state, ...action.state }
     default:
       return state
   }

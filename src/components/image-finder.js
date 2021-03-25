@@ -4,8 +4,11 @@ import { connect } from "react-redux"
 import {
   setSearchById,
   setSearch,
-  setImage
+  setImage,
+  setState,
 } from "../state/app"
+
+import Uncap from "./uncap"
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
@@ -65,23 +68,23 @@ const shiftImage = (dispatch, search, shift) => {
   dispatch(setSearch(search, { load: true }))
 }
 
-const shiftUncap = (dispatch, search, shift) => {
-  let uncaps = ["01", "02", "03"]
-  let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
-  if (!uncap) return
-
-  search.uncap = uncap
-  dispatch(setSearch(search, { load: true }))
-}
-
 const ImageFinder = ({
   dispatch,
   debug,
+  dialogue,
   search,
   image,
   searchById
 }) => <div>
   <Form>
+    <Form.Group>
+      <Form.Check
+        type="switch"
+        id="dialogue"
+        label="Dialogue"
+        onClick={() => dispatch(setState({dialogue: !dialogue}))}
+      />
+    </Form.Group>
     <Form.Group>
       <Form.Check
         type="switch"
@@ -153,32 +156,9 @@ const ImageFinder = ({
       />
     </Form.Group>
 
-    <Form.Group>
-      <InputGroup>
-        <Form.Control as="select"
-          size="sm"
-          name="uncap"
-          value={search.uncap}
-          onChange={handleChange.bind(this, dispatch, search)}
-        >
-          <option value="01">★</option>
-          <option value="02">★★★</option>
-          <option value="03">★★★★★</option>
-        </Form.Control>
-        &nbsp;
-        <InputGroup.Append>
-          <Button size="sm"
-            onClick={() => shiftUncap(dispatch, search, -1)}
-          >&nbsp;{"<"}&nbsp;</Button>
-        </InputGroup.Append>
-        &nbsp;
-        <InputGroup.Append>
-          <Button size="sm"
-            onClick={() => shiftUncap(dispatch, search, 1)}
-          >&nbsp;{">"}&nbsp;</Button>
-        </InputGroup.Append>
-      </InputGroup>
-    </Form.Group>
+    <div hidden={dialogue}>
+      <Uncap />
+    </div>
 
     <Form.Group>
       <Button block
@@ -197,5 +177,6 @@ export default connect(state => ({
   debug: state.app.debug,
   search: state.app.search,
   image: state.app.image,
-  searchById: state.app.searchById
+  searchById: state.app.searchById,
+  dialogue: state.app.dialogue,
 }), null) (ImageFinder)
