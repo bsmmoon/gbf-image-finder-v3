@@ -6,6 +6,10 @@ import {
   setState,
 } from "../state/app"
 
+import {
+  toggleDialogue,
+} from "../helpers/search-helper"
+
 import Rarity from "./rarity"
 import Character from "./character"
 import CharacterId from "./character-id"
@@ -17,6 +21,7 @@ import Form from "react-bootstrap/Form"
 const ImageFinder = ({
   dispatch,
   dialogue,
+  search,
   searchById
 }) => <div>
   <Form>
@@ -25,7 +30,10 @@ const ImageFinder = ({
         type="switch"
         id="dialogue"
         label="Dialogue"
-        onClick={() => dispatch(setState({dialogue: !dialogue}))}
+        onClick={() => {
+          dispatch(setState({dialogue: !dialogue}))
+          dispatch(toggleDialogue(dispatch, search))
+        }}
       />
     </Form.Group>
     <Form.Group>
@@ -57,4 +65,5 @@ const ImageFinder = ({
 export default connect(state => ({
   searchById: state.app.searchById,
   dialogue: state.app.dialogue,
+  search: state.app.search,
 }), null) (ImageFinder)

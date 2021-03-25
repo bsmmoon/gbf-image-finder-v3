@@ -48,6 +48,11 @@ export const submit = (dispatch, search, image, event) => {
   dispatch(setImage(search))
 }
 
+export const toggleDialogue = (dispatch, search, shift) => {
+  search.dialogue = !search.dialogue
+  dispatch(setSearch(search, { load: true }))
+}
+
 export const shiftImage = (dispatch, search, shift) => {
   let ids = _.keys(Playable[search.category])
   let id = ids[ids.indexOf(search.id) + shift]
