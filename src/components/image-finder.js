@@ -8,7 +8,7 @@ import {
 
 import Rarity from "./rarity"
 import Character from "./character"
-import CharacterId from "./character_id"
+import CharacterId from "./character-id"
 import Uncap from "./uncap"
 import Submit from "./submit"
 

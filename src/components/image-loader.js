@@ -9,7 +9,7 @@ import {
   setNotFound
 } from "../state/app"
 
-import UrlBuilder from "../components/url-builder"
+import UrlBuilder from "../helpers/url-builder"
 
 const ImageLoader = ({
   dispatch,

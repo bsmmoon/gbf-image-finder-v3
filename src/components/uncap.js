@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import {
   handleChange,
   shiftUncap,
-} from "../helpers/search_helper"
+} from "../helpers/search-helper"
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"

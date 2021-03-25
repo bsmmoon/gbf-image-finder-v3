@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import {
   handleChange,
-} from "../helpers/search_helper"
+} from "../helpers/search-helper"
 
 import Form from "react-bootstrap/Form"
 
