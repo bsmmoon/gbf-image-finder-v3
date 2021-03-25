@@ -2,32 +2,13 @@ import React from "react"
 import { connect } from "react-redux"
 
 import {
-  setSearch,
-} from "../state/app"
+  handleChange,
+  shiftUncap,
+} from "../helpers/search_helper"
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
-
-const handleChange = (dispatch, search, event) => {
-  search = JSON.parse(JSON.stringify(search))
-  
-  const name = event.target.name
-  const value = event.target.value
-  
-  search[name] = value
-
-  dispatch(setSearch(search))
-}
-
-const shiftUncap = (dispatch, search, shift) => {
-  let uncaps = ["01", "02", "03"]
-  let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
-  if (!uncap) return
-
-  search.uncap = uncap
-  dispatch(setSearch(search, { load: true }))
-}
 
 const Uncap = ({
   dispatch,

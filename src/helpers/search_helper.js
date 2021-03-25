@@ -1,7 +1,6 @@
 import {
   setImage,
   setSearch,
-  setState,
 } from "../state/app"
 
 import Playable from "../content/playable.json"
@@ -57,4 +56,14 @@ export const shiftImage = (dispatch, search, shift) => {
   search.id = id
   dispatch(setSearch(search, { load: true }))
 }
+
+export const shiftUncap = (dispatch, search, shift) => {
+  let uncaps = ["01", "02", "03"]
+  let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
+  if (!uncap) return
+
+  search.uncap = uncap
+  dispatch(setSearch(search, { load: true }))
+}
+
 

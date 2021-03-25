@@ -12,6 +12,7 @@ import {
   submit,
 } from "../helpers/search_helper"
 
+import Rarity from "./rarity"
 import Uncap from "./uncap"
 
 import Button from "react-bootstrap/Button"
@@ -48,23 +49,7 @@ const ImageFinder = ({
       />
     </Form.Group>
 
-    <Form.Group>
-      <Form.Control as="select"
-        hidden={searchById}
-        size="sm"
-        name="category"
-        defaultValue={search.category}
-        onChange={handleChange.bind(this, dispatch, search)}
-      >
-        {
-          _.map(
-            _.keys(Playable), (category) => (
-              <option>{category}</option>
-            )
-          )
-        }
-      </Form.Control>
-    </Form.Group>
+    <div hidden={searchById}><Rarity /></div>
     
     <Form.Group>
       <InputGroup hidden={searchById}>
