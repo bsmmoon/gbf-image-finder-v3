@@ -3,10 +3,14 @@ import { connect } from "react-redux"
 
 import {
   setSearchById,
-  setSearch,
-  setImage,
   setState,
 } from "../state/app"
+
+import {
+  handleChange,
+  shiftImage,
+  submit,
+} from "../helpers/search_helper"
 
 import Uncap from "./uncap"
 
@@ -17,56 +21,6 @@ import InputGroup from "react-bootstrap/InputGroup"
 import Playable from "../content/playable.json"
 
 import _ from "lodash"
-
-// Set default values when category changes
-const onCategoryChange = (search, value) => {
-  switch (value) {
-    case "R":
-      search.id = "3020016000"
-      break
-    case "SR":
-      search.id = "3030019000"
-      break
-    case "SSR":
-      search.id = "3040040000"
-      break
-    default:
-  }
-  return search
-}
-
-const handleChange = (dispatch, search, event) => {
-  search = JSON.parse(JSON.stringify(search))
-  
-  const name = event.target.name
-  const value = event.target.value
-  
-  search[name] = value
-
-  switch(name) {
-    case "category":
-      search = onCategoryChange(search, value)
-      break
-    default:
-  }
-
-  dispatch(setSearch(search))
-}
-
-const submit = (dispatch, search, image, event) => {
-  event.preventDefault()
-  if (JSON.stringify(search) === JSON.stringify(image)) return
-  dispatch(setImage(search))
-}
-
-const shiftImage = (dispatch, search, shift) => {
-  let ids = _.keys(Playable[search.category])
-  let id = ids[ids.indexOf(search.id) + shift]
-  if (!id) return
-
-  search.id = id
-  dispatch(setSearch(search, { load: true }))
-}
 
 const ImageFinder = ({
   dispatch,
@@ -156,8 +110,9 @@ const ImageFinder = ({
       />
     </Form.Group>
 
+    <Uncap />
+
     <div hidden={dialogue}>
-      <Uncap />
     </div>
 
     <Form.Group>
