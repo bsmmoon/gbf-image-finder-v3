@@ -10,13 +10,15 @@ const Debug = ({ dispatch, state }) => (
     <Button size="sm" onClick={() => dispatch(setDebug(!state.debug))}>Debug</Button>
     <br/>
     <div hidden={!state.debug}>
-      {
-        JSON.stringify(state)
-      }
+      <pre>{format(state)}</pre>
     </div>
     <br/>
   </div>
 )
+
+const format = (state) => {
+  return JSON.stringify(state, null, 2)
+}
 
 export default connect(state => ({
   state: {

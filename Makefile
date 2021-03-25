@@ -12,3 +12,8 @@ server:
 
 kill:
 	kill -9 ${shell lsof -ti :$(PORT)}
+
+tree:
+	tree -I "node_modules|public"
+
+

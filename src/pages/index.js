@@ -5,11 +5,12 @@ import SEO from "../components/seo"
 
 import ImageFinder from "../components/image-finder"
 import ImageLoader from "../components/image-loader"
-// import Debug from "../components/debug"
+import Debug from "../components/debug"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <Debug />
     <ImageFinder />
     <ImageLoader />
   </Layout>
