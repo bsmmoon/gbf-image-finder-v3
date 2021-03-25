@@ -6,24 +6,17 @@ import {
   setState,
 } from "../state/app"
 
-import {
-  submit,
-} from "../helpers/search_helper"
-
 import Rarity from "./rarity"
 import Character from "./character"
 import CharacterId from "./character_id"
 import Uncap from "./uncap"
+import Submit from "./submit"
 
-import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 
 const ImageFinder = ({
   dispatch,
-  debug,
   dialogue,
-  search,
-  image,
   searchById
 }) => <div>
   <Form>
@@ -56,23 +49,12 @@ const ImageFinder = ({
     <div hidden={dialogue}>
     </div>
 
-    <Form.Group>
-      <Button block
-        type="submit"
-        size="sm"
-        onClick={submit.bind(this, dispatch, search, image)}
-      >
-        Submit
-      </Button>
-    </Form.Group>
+    <Submit />
   </Form>
   <br/>
 </div>
 
 export default connect(state => ({
-  debug: state.app.debug,
-  search: state.app.search,
-  image: state.app.image,
   searchById: state.app.searchById,
   dialogue: state.app.dialogue,
 }), null) (ImageFinder)
