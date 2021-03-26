@@ -18,7 +18,7 @@ const UrlBuilder = (image) => {
 }
 
 const dialogue = (image) => {
-  let suffix = ""
+  let suffix = image.uncap === "01" ? "" :`_${image.uncap}`
 
   return `${TYPE_DIALOGUE}/${image.id}${suffix}`
 }

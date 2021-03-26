@@ -1,6 +1,6 @@
 
 const DEFAULT = {
-  id: "3040120000",
+  id: "3040009000",
   category: "SSR",
   uncap: "01",
   dialogue: false,
