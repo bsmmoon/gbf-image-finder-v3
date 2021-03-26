@@ -28,9 +28,7 @@ const ImageFinder = ({
         type="switch"
         id="dialogue"
         label="Dialogue"
-        onClick={() => {
-          dispatch(toggleDialogue(dispatch, search))
-        }}
+        onClick={() => toggleDialogue(dispatch, search)}
       />
     </Form.Group>
     <Form.Group>
