@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
 
-import Playable from "../content/playable.json"
+import Characters from "../content/characters.json"
 
 import _ from "lodash"
 
@@ -28,9 +28,9 @@ const Character = ({
       >
         {
           _.map(
-            _.keys(Playable[search.category]), (id) => (
+            _.keys(Characters[search.category]), (id) => (
               <option value={id}>
-               {Playable[search.category][id]}
+               {Characters[search.category][id]}
               </option>
             )
           )

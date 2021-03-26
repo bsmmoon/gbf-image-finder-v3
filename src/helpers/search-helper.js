@@ -3,7 +3,7 @@ import {
   setSearch,
 } from "../state/app"
 
-import Playable from "../content/playable.json"
+import Characters from "../content/characters.json"
 import Tags from "../content/tags.json"
 
 import _ from "lodash"
@@ -55,7 +55,7 @@ export const toggleDialogue = (dispatch, search, shift) => {
 }
 
 export const shiftImage = (dispatch, search, shift) => {
-  let ids = _.keys(Playable[search.category])
+  let ids = _.keys(Characters[search.category])
   let id = ids[ids.indexOf(search.id) + shift]
   if (!id) return
 

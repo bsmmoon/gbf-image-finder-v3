@@ -2,7 +2,7 @@
  * Dialogue:
  * http://game-a.granbluefantasy.jp/assets_en/img/sp/quest/scene/character/body/3040053000.png
  * 
- * Playable:
+ * Characters:
  * http://game-a.granbluefantasy.jp/assets_en/img/sp/assets/npc/zoom/3040053000_01.png
  */
 const HOST="http://game-a.granbluefantasy.jp"

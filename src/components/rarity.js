@@ -7,7 +7,7 @@ import {
 
 import Form from "react-bootstrap/Form"
 
-import Playable from "../content/playable.json"
+import Characters from "../content/characters.json"
 
 import _ from "lodash"
 
@@ -24,7 +24,7 @@ const Rarity = ({
     >
       {
         _.map(
-          _.keys(Playable), (category) => (
+          _.keys(Characters), (category) => (
             <option>{category}</option>
           )
         )
