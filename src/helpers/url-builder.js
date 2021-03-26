@@ -22,7 +22,7 @@ const dialogue = (image) => {
   
   suffix += image.uncap === "01" ? "" :`_${image.uncap}`
 
-  suffix += image.tag === "default" ? "" : `_${image.tag}`
+  suffix += (!image.tag || image.tag === "default") ? "" : `_${image.tag}`
 
   return `${TYPE_DIALOGUE}/${image.id}${suffix}`
 }

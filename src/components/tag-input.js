@@ -7,18 +7,18 @@ import {
 
 import Form from "react-bootstrap/Form"
 
-const CharacterId = ({
+const TagInput = ({
   dispatch,
   search,
   settings,
 }) => (
   <Form.Group>
     <Form.Control type="text"
-      disabled={!settings.searchById}
+      disabled={!settings.searchTag}
       size="sm"
-      name="id"
-      placeholder="ID (ex. 3040053000)"
-      value={search.id}
+      name="tag"
+      placeholder="Tag (ex. laugh)"
+      value={search.tag}
       onChange={handleChange.bind(this, dispatch, search)}
     />
   </Form.Group>
@@ -27,5 +27,5 @@ const CharacterId = ({
 export default connect(state => ({
   search: state.app.search,
   settings: state.app.settings,
-}), null)(CharacterId)
+}), null)(TagInput)
 
