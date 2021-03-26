@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 
 import {
   setSearchById,
-  setState,
 } from "../state/app"
 
 import {
@@ -20,7 +19,6 @@ import Form from "react-bootstrap/Form"
 
 const ImageFinder = ({
   dispatch,
-  dialogue,
   search,
   searchById
 }) => <div>
@@ -31,7 +29,6 @@ const ImageFinder = ({
         id="dialogue"
         label="Dialogue"
         onClick={() => {
-          dispatch(setState({dialogue: !dialogue}))
           dispatch(toggleDialogue(dispatch, search))
         }}
       />
@@ -54,7 +51,7 @@ const ImageFinder = ({
 
     <Uncap />
 
-    <div hidden={dialogue}>
+    <div hidden={search.dialogue}>
     </div>
 
     <Submit />
@@ -64,6 +61,5 @@ const ImageFinder = ({
 
 export default connect(state => ({
   searchById: state.app.searchById,
-  dialogue: state.app.dialogue,
   search: state.app.search,
 }), null) (ImageFinder)

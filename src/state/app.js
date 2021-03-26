@@ -8,7 +8,6 @@ const DEFAULT = {
 
 const initialState = {
   debug: false,
-  dialogue: false,
   searchById: false,
   loading: false,
   notFound: false,
