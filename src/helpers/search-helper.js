@@ -4,6 +4,7 @@ import {
 } from "../state/app"
 
 import Playable from "../content/playable.json"
+import Tags from "../content/tags.json"
 
 import _ from "lodash"
 
@@ -59,6 +60,15 @@ export const shiftImage = (dispatch, search, shift) => {
   if (!id) return
 
   search.id = id
+  dispatch(setSearch(search, { load: true }))
+}
+
+export const shiftTag = (dispatch, search, shift) => {
+  let tags = ["default", ...Tags.list]
+  let tag = tags[tags.indexOf(search.tag) + shift]
+  if (!tag) return
+
+  search.tag = tag
   dispatch(setSearch(search, { load: true }))
 }
 

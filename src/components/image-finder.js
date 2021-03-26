@@ -13,6 +13,7 @@ import Rarity from "./rarity"
 import Character from "./character"
 import CharacterId from "./character-id"
 import Uncap from "./uncap"
+import Tag from "./tag"
 import Submit from "./submit"
 
 import Form from "react-bootstrap/Form"
@@ -49,7 +50,8 @@ const ImageFinder = ({
 
     <Uncap />
 
-    <div hidden={search.dialogue}>
+    <div hidden={!search.dialogue}>
+      <Tag />
     </div>
 
     <Submit />

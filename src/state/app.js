@@ -4,6 +4,7 @@ const DEFAULT = {
   category: "SSR",
   uncap: "01",
   dialogue: false,
+  tag: "default",
 }
 
 const initialState = {
