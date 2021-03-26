@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 
 import {
-  setSearchById,
+  setSettings,
 } from "../state/app"
 
 import {
@@ -21,27 +21,35 @@ import Form from "react-bootstrap/Form"
 const ImageFinder = ({
   dispatch,
   search,
-  searchById
+  settings,
 }) => <div>
   <Form>
     <Form.Group>
       <Form.Check
         type="switch"
-        id="dialogue"
         label="Dialogue"
+        id="dialogue"
         onClick={() => toggleDialogue(dispatch, search)}
+      />
+    </Form.Group>
+    <Form.Group hidden={!search.dialogue}>
+      <Form.Check
+        type="switch"
+        label="Search tag"
+        id="search-tag"
+        onClick={() => dispatch(setSettings({...settings, searchTag: !settings.searchTag}))}
       />
     </Form.Group>
     <Form.Group>
       <Form.Check
         type="switch"
-        id="manual"
         label="Search by ID"
-        onClick={() => dispatch(setSearchById(!searchById))}
+        id="search-by-id"
+        onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
       />
     </Form.Group>
 
-    <div hidden={searchById}>
+    <div hidden={settings.searchById}>
       <Rarity />
       <Character />
     </div>
@@ -60,6 +68,6 @@ const ImageFinder = ({
 </div>
 
 export default connect(state => ({
-  searchById: state.app.searchById,
   search: state.app.search,
+  settings: state.app.settings,
 }), null) (ImageFinder)

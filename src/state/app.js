@@ -1,5 +1,5 @@
 
-const DEFAULT = {
+const DEFAULT_SEARCH = {
   id: "3040009000",
   category: "SSR",
   uncap: "01",
@@ -7,13 +7,18 @@ const DEFAULT = {
   tag: "default",
 }
 
+const DEFAULT_SETTINGS = {
+  searchById: false,
+  searchTag: false,
+}
+
 const initialState = {
   debug: false,
-  searchById: false,
   loading: false,
   notFound: false,
-  search: JSON.parse(JSON.stringify(DEFAULT)),
-  image: JSON.parse(JSON.stringify(DEFAULT))
+  search: JSON.parse(JSON.stringify(DEFAULT_SEARCH)),
+  image: JSON.parse(JSON.stringify(DEFAULT_SEARCH)),
+  settings: { ...DEFAULT_SETTINGS }
 }
 
 // ACTIONS
@@ -21,11 +26,6 @@ const initialState = {
 const SET_DEBUG = "SET_DEBUG"
 export const setDebug = (debug)  => ({
   type: SET_DEBUG, debug
-})
-
-const SET_SEARCH_BY_ID = "SET_SEARCH_BY_ID"
-export const setSearchById = (searchById) => ({
-  type: SET_SEARCH_BY_ID, searchById
 })
 
 const SET_LOADING = "SET_LOADING"
@@ -44,6 +44,12 @@ export const setSearch = (search, options={}) => {
   return { type: SET_SEARCH, search, options }
 }
 
+const SET_SETTINGS = "SET_SETTINGS"
+export const setSettings = (settings, options={}) => {
+  settings = JSON.parse(JSON.stringify(settings))
+  return { type: SET_SETTINGS, settings, options }
+}
+
 const SET_IMAGE = "SET_IMAGE"
 export const setImage = (search) => ({
   type: SET_IMAGE, search
@@ -60,8 +66,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SET_DEBUG:
       return { ...state, debug: action.debug }
-    case SET_SEARCH_BY_ID:
-      return { ...state, searchById: action.searchById }
     case SET_LOADING:
       return { ...state,
         loading: action.loading,
@@ -84,6 +88,8 @@ export default (state = initialState, action) => {
       } else {
         return { ...state, search }
       } 
+    case SET_SETTINGS:
+      return { ...state, settings: action.settings }
     case SET_IMAGE:
       return { ...state,
         image: action.search,

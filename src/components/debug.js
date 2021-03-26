@@ -23,10 +23,10 @@ const format = (state) => {
 export default connect(state => ({
   state: {
     debug: state.app.debug,
-    searchById: state.app.searchById,
     loading: state.app.loading,
     notFound: state.app.notFound,
     search: state.app.search,
     image: state.app.image,
+    settings: state.app.settings,
   }
 }))(Debug)
