@@ -20,6 +20,9 @@ export const onCategoryChange = (search, value) => {
     case "SSR":
       search.id = "3040040000"
       break
+    case "NPC":
+      search.id = "3050000000"
+      break
     default:
   }
   return search
