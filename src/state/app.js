@@ -10,6 +10,7 @@ const DEFAULT_SEARCH = {
 const DEFAULT_SETTINGS = {
   searchById: false,
   searchTag: false,
+  sortById: false,
 }
 
 const initialState = {

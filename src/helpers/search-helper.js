@@ -58,8 +58,8 @@ export const toggleDialogue = (dispatch, search, shift) => {
   dispatch(setSearch(search, { load: true }))
 }
 
-export const shiftImage = (dispatch, search, shift) => {
-  let list = characters(search.category)
+export const shiftImage = (dispatch, search, settings, shift) => {
+  let list = characters(search.category, settings.sortById)
   let index = list.findIndex((e) => e.id === search.id)
   let character = list[index + shift]
   

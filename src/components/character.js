@@ -32,7 +32,7 @@ const Character = ({
         name="id"
         value={search.id}
         onChange={handleChange.bind(this, dispatch, search)}
-      >{_.map(characters(search.category), (character) =>
+      >{_.map(characters(search.category, settings.sortById), (character) =>
           <option value={character.id}>
            {character.name}
           </option>
@@ -41,7 +41,7 @@ const Character = ({
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          onClick={() => dispatch(setSettings({...settings, sortByName: !settings.sortByName}))}
+          onClick={() => dispatch(setSettings({...settings, sortById: !settings.sortById}))}
         >&nbsp;A&nbsp;</Button>
       </InputGroup.Append>
       &nbsp;
@@ -53,13 +53,13 @@ const Character = ({
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          onClick={() => shiftImage(dispatch, search, -1)}
+          onClick={() => shiftImage(dispatch, search, settings, -1)}
         >&nbsp;{"<"}&nbsp;</Button>
       </InputGroup.Append>
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          onClick={() => shiftImage(dispatch, search, 1)}
+          onClick={() => shiftImage(dispatch, search, settings, 1)}
         >&nbsp;{">"}&nbsp;</Button>
       </InputGroup.Append>
     </InputGroup>
