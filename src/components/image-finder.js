@@ -39,12 +39,6 @@ const ImageFinder = ({
         id="search-tag"
         onClick={() => dispatch(setSettings({...settings, searchTag: !settings.searchTag}))}
       />
-      <Form.Check
-        type="switch"
-        label="Search ID"
-        id="search-by-id"
-        onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
-      />
     </Form.Group>
 
     <div hidden={settings.searchById}>

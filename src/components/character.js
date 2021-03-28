@@ -10,10 +10,6 @@ import {
   shiftImage,
 } from "../helpers/search-helper"
 
-import {
-  edit
-} from "../helpers/fontawesome"
-
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
@@ -50,7 +46,7 @@ const Character = ({
         <Button size="sm"
           style={{color: "white"}}
           onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
-        >&nbsp;{edit}&nbsp;</Button>
+        >&nbsp;*&nbsp;</Button>
       </InputGroup.Append>
       &nbsp;
       <InputGroup.Append>

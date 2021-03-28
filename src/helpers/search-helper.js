@@ -66,6 +66,11 @@ export const shiftImage = (dispatch, search, shift) => {
   dispatch(setSearch(search, { load: true }))
 }
 
+export const shiftImageId = (dispatch, search, shift) => {
+  search.id = (parseInt(search.id) + parseInt(shift)).toString()
+  dispatch(setSearch(search, { load: true }))
+}
+
 export const shiftTag = (dispatch, search, shift) => {
   let tags = ["default", ...Tags.list]
   let tag = tags[tags.indexOf(search.tag) + shift]
