@@ -32,19 +32,16 @@ const ImageFinder = ({
         id="dialogue"
         onClick={() => toggleDialogue(dispatch, search)}
       />
-    </Form.Group>
-    <Form.Group hidden={!search.dialogue}>
       <Form.Check
+        disabled={!search.dialogue}
         type="switch"
         label="Search tag"
         id="search-tag"
         onClick={() => dispatch(setSettings({...settings, searchTag: !settings.searchTag}))}
       />
-    </Form.Group>
-    <Form.Group>
       <Form.Check
         type="switch"
-        label="Search by ID"
+        label="Search ID"
         id="search-by-id"
         onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
       />
@@ -55,8 +52,10 @@ const ImageFinder = ({
       <Character />
     </div>
 
-    <CharacterId />
-
+    <div hidden={!settings.searchById}>
+      <CharacterId />
+    </div>
+    
     <Uncap />
 
     <div hidden={!search.dialogue}>

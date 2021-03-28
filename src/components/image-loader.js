@@ -9,6 +9,10 @@ import {
   setNotFound
 } from "../state/app"
 
+import {
+  clipboard
+} from "../helpers/fontawesome"
+
 import UrlBuilder from "../helpers/url-builder"
 
 const ImageLoader = ({
@@ -32,8 +36,10 @@ const ImageLoader = ({
     >
       <span className="sr-only"/>
     </Spinner>
-    <div hidden={!notFound}>Not Found!</div>
-    <div hidden={loading}>{url}</div>
+    <div style={{fontSize: "8px"}}>
+      <div hidden={!notFound}>Not Found!</div>
+      <div hidden={loading}>{url}&nbsp;{clipboard()}</div>
+    </div>
   </div>
 }
 

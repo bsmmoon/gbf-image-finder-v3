@@ -43,7 +43,7 @@ export const handleChange = (dispatch, search, event) => {
     default:
   }
 
-  dispatch(setSearch(search))
+  dispatch(setSearch(search, { load: true }))
 }
 
 export const submit = (dispatch, search, image, event) => {
