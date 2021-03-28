@@ -1,6 +1,12 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClipboard } from '@fortawesome/free-regular-svg-icons'
+import {
+  faClipboard,
+  faEdit,
+} from '@fortawesome/free-regular-svg-icons'
 
-export const clipboard = () => <FontAwesomeIcon icon={faClipboard} />
+const make = (icon) => <FontAwesomeIcon icon={icon} />
+
+export const clipboard = () => make(faClipboard)
+export const edit = () => make(faEdit)
 
