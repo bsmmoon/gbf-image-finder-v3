@@ -10,11 +10,13 @@ import {
   shiftImage,
 } from "../helpers/search-helper"
 
+import {
+  characters,
+} from "../helpers/data"
+
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
-
-import Characters from "../content/characters.json"
 
 import _ from "lodash"
 
@@ -30,16 +32,11 @@ const Character = ({
         name="id"
         value={search.id}
         onChange={handleChange.bind(this, dispatch, search)}
-      >
-        {
-          _.map(
-            _.keys(Characters[search.category]), (id) => (
-              <option value={id}>
-               {Characters[search.category][id]}
-              </option>
-            )
-          )
-        }
+      >{_.map(characters(search.category), (character) =>
+          <option value={character.id}>
+           {character.name}
+          </option>
+        )}
       </Form.Control>
       &nbsp;
       <InputGroup.Append>

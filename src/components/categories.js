@@ -5,9 +5,11 @@ import {
   handleChange,
 } from "../helpers/search-helper"
 
-import Form from "react-bootstrap/Form"
+import {
+  categories,
+} from "../helpers/data"
 
-import Characters from "../content/characters.json"
+import Form from "react-bootstrap/Form"
 
 import _ from "lodash"
 
@@ -21,14 +23,9 @@ const Rarity = ({
       name="category"
       defaultValue={search.category}
       onChange={handleChange.bind(this, dispatch, search)}
-    >
-      {
-        _.map(
-          _.keys(Characters), (category) => (
-            <option>{category}</option>
-          )
-        )
-      }
+    >{
+      _.map(categories, category => <option>{category}</option>)
+    }
     </Form.Control>
   </Form.Group>
 )

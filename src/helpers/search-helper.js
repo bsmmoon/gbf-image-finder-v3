@@ -3,7 +3,10 @@ import {
   setSearch,
 } from "../state/app"
 
-import Characters from "../content/characters.json"
+import {
+  characters,
+} from "../helpers/data"
+
 import Tags from "../content/tags.json"
 
 import _ from "lodash"
@@ -58,11 +61,13 @@ export const toggleDialogue = (dispatch, search, shift) => {
 }
 
 export const shiftImage = (dispatch, search, shift) => {
-  let ids = _.keys(Characters[search.category])
-  let id = ids[ids.indexOf(search.id) + shift]
-  if (!id) return
+  let list = characters(search.category)
+  let index = list.findIndex((e) => e.id === search.id)
+  let character = list[index + shift]
+  
+  if (!character) return
 
-  search.id = id
+  search.id = character.id
   dispatch(setSearch(search, { load: true }))
 }
 
