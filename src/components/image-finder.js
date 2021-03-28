@@ -15,7 +15,7 @@ import CharacterId from "./character-id"
 import Uncap from "./uncap"
 import Tag from "./tag"
 import TagInput from "./tag-input"
-import Submit from "./submit"
+// import Submit from "./submit"
 
 import Form from "react-bootstrap/Form"
 
@@ -64,7 +64,6 @@ const ImageFinder = ({
       <div hidden={!settings.searchTag}><TagInput /></div>
     </div>
 
-    <Submit />
   </Form>
   <br/>
 </div>
