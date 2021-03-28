@@ -8,7 +8,7 @@ import {
 import Categories from "./categories"
 import Character from "./character"
 import CharacterId from "./character-id"
-import Uncap from "./uncap"
+import Version from "./version"
 import Tag from "./tag"
 import TagInput from "./tag-input"
 // import Submit from "./submit"
@@ -39,7 +39,7 @@ const ImageFinder = ({
       <CharacterId />
     </div>
     
-    <Uncap />
+    <Version />
 
     <div hidden={!search.dialogue}>
       <div hidden={settings.searchTag}><Tag /></div>

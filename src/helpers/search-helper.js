@@ -5,6 +5,7 @@ import {
 
 import {
   characters,
+  versions,
 } from "../helpers/data"
 
 import Tags from "../content/tags.json"
@@ -83,12 +84,11 @@ export const shiftTag = (dispatch, search, shift) => {
   dispatch(setSearch(search, { load: true }))
 }
 
-export const shiftUncap = (dispatch, search, shift) => {
-  let uncaps = ["01", "02", "03"]
-  let uncap = uncaps[uncaps.indexOf(search.uncap) + shift]
-  if (!uncap) return
+export const shiftVersion = (dispatch, search, shift) => {
+  let version = versions[versions.findIndex((e) => e.value === search.version) + shift]
+  if (!version) return
 
-  search.uncap = uncap
+  search.version = version.value
   dispatch(setSearch(search, { load: true }))
 }
 

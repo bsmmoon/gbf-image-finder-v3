@@ -20,7 +20,7 @@ const UrlBuilder = (image) => {
 const dialogue = (image) => {
   let suffix = ""
   
-  suffix += image.uncap === "01" ? "" :`_${image.uncap}`
+  suffix += image.version === "01" ? "" :`_${image.version}`
 
   suffix += (!image.tag || image.tag === "default") ? "" : `_${image.tag}`
 
@@ -28,7 +28,7 @@ const dialogue = (image) => {
 }
 
 const playable = (image) => {
-  let suffix = `${!!image.uncap ? `_${image.uncap}` : ''}`
+  let suffix = `${!!image.version ? `_${image.version}` : ''}`
 
   return `${TYPE_PLAYABLE}/${image.id}${suffix}`
 }

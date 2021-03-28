@@ -45,22 +45,23 @@ const ImageLoader = ({
     />
     <Spinner
       hidden={!loading}
+      className="float-right"
       animation="border"
       size="sm"
     >
       <span className="sr-only"/>
     </Spinner>
-    <div style={{fontSize: "8px"}}>
+    <div className="float-right">
       <div hidden={!notFound}>Not Found!</div>
-      <div hidden={loading} role="button" tabIndex={0}
+      <div hidden={notFound || loading}
+        role="button" tabIndex={0}
         ref={target}
-        className="float-right"
         onClick={() => {
           copyToClipboard(url)
           setShow(!show)
         }}
         onKeyUp={()=>{}}
-      >{url}&nbsp;{clipboard()}</div>
+      >Copy URL&nbsp;{clipboard()}</div>
       <Overlay target={target.current} show={show} placement="bottom">
         {(props) => (
           <Tooltip id="overlay-example" {...props}>

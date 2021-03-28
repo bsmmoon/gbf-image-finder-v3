@@ -3,12 +3,18 @@ import { connect } from "react-redux"
 
 import {
   handleChange,
-  shiftUncap,
+  shiftVersion,
 } from "../helpers/search-helper"
+
+import {
+  versions,
+} from "../helpers/data"
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
+
+import _ from "lodash"
 
 const Uncap = ({
   dispatch,
@@ -18,24 +24,23 @@ const Uncap = ({
     <InputGroup>
       <Form.Control as="select"
         size="sm"
-        name="uncap"
-        value={search.uncap}
+        name="version"
+        value={search.version}
         onChange={handleChange.bind(this, dispatch, search)}
-      >
-        <option value="01">★</option>
-        <option value="02">★★★</option>
-        <option value="03">★★★★★</option>
-      </Form.Control>
+      >{_.map(versions, (version) =>
+        <option value={version.value}
+          >{version.label}</option>)
+      }</Form.Control>
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          onClick={() => shiftUncap(dispatch, search, -1)}
+          onClick={() => shiftVersion(dispatch, search, -1)}
         >&nbsp;{"<"}&nbsp;</Button>
       </InputGroup.Append>
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          onClick={() => shiftUncap(dispatch, search, 1)}
+          onClick={() => shiftVersion(dispatch, search, 1)}
         >&nbsp;{">"}&nbsp;</Button>
       </InputGroup.Append>
     </InputGroup>

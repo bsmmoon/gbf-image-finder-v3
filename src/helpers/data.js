@@ -12,3 +12,11 @@ export const characterIds = (category, byId=false) => {
   return _.keys(Characters[category]).sort(byId ? (a, b) => a - b : (a, b) =>  Characters[category][a].localeCompare(Characters[category][b]))
 }
 
+export const versions = [
+  { label: "★", value: "01" },
+  { label: "★★", value: "02" },
+  { label: "★★★", value: "03" },
+  { label: "School", value: "school" },
+  { label: "Race", value: "race" },
+]
+

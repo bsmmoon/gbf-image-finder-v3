@@ -2,7 +2,7 @@
 const DEFAULT_SEARCH = {
   id: "3040009000",
   category: "SSR",
-  uncap: "01",
+  version: "01",
   dialogue: false,
   tag: "default",
 }
