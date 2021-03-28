@@ -41,6 +41,12 @@ const Character = ({
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
+          onClick={() => dispatch(setSettings({...settings, sortByName: !settings.sortByName}))}
+        >&nbsp;A&nbsp;</Button>
+      </InputGroup.Append>
+      &nbsp;
+      <InputGroup.Append>
+        <Button size="sm"
           onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
         >&nbsp;*&nbsp;</Button>
       </InputGroup.Append>

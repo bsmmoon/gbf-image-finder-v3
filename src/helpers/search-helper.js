@@ -9,8 +9,6 @@ import {
 
 import Tags from "../content/tags.json"
 
-import _ from "lodash"
-
 // Set default values when category changes
 export const onCategoryChange = (search, value) => {
   switch (value) {
