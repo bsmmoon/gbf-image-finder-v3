@@ -21,7 +21,7 @@ const ImageFinder = ({
   settings,
 }) => <div>
   <Form>
-    <Form.Group>
+    <Form.Group className="float-right">
       <Form.Check
         type="switch"
         label="Dialogue"
