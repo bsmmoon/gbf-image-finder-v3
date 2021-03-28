@@ -2,6 +2,10 @@ import React from "react"
 import { connect } from "react-redux"
 
 import {
+  setSettings,
+} from "../state/app"
+
+import {
   handleChange,
   shiftTag,
 } from "../helpers/search-helper"
@@ -17,6 +21,7 @@ import _ from "lodash"
 const Character = ({
   dispatch,
   search,
+  settings,
 }) => (
   <Form.Group>
     <InputGroup>
@@ -38,6 +43,12 @@ const Character = ({
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
+          onClick={() => dispatch(setSettings({...settings, searchTag: !settings.searchTag}))}
+        >&nbsp;*&nbsp;</Button>
+      </InputGroup.Append>
+      &nbsp;
+      <InputGroup.Append>
+        <Button size="sm"
           onClick={() => shiftTag(dispatch, search, -1)}
         >&nbsp;{"<"}&nbsp;</Button>
       </InputGroup.Append>
@@ -53,5 +64,6 @@ const Character = ({
 
 export default connect(state => ({
   search: state.app.search,
+  settings: state.app.settings,
 }), null)(Character)
 

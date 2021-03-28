@@ -31,7 +31,6 @@ const CharacterId = ({
       &nbsp;
       <InputGroup.Append>
         <Button size="sm"
-          style={{color: "white"}}
           onClick={() => dispatch(setSettings({...settings, searchById: !settings.searchById}))}
         >&nbsp;*&nbsp;</Button>
       </InputGroup.Append>

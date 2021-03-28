@@ -2,10 +2,6 @@ import React from "react"
 import { connect } from "react-redux"
 
 import {
-  setSettings,
-} from "../state/app"
-
-import {
   toggleDialogue,
 } from "../helpers/search-helper"
 
@@ -31,13 +27,6 @@ const ImageFinder = ({
         label="Dialogue"
         id="dialogue"
         onClick={() => toggleDialogue(dispatch, search)}
-      />
-      <Form.Check
-        disabled={!search.dialogue}
-        type="switch"
-        label="Search tag"
-        id="search-tag"
-        onClick={() => dispatch(setSettings({...settings, searchTag: !settings.searchTag}))}
       />
     </Form.Group>
 
