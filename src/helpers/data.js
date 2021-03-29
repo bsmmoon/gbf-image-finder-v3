@@ -18,5 +18,8 @@ export const versions = [
   { label: "★★★", value: "03" },
   { label: "School", value: "school" },
   { label: "Race", value: "race" },
+  { label: "a", value: "a" },
+  { label: "b", value: "b" },
+  { label: "c", value: "c" },
 ]
 

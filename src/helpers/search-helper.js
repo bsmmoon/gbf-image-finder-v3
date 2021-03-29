@@ -14,16 +14,16 @@ import Tags from "../content/tags.json"
 export const onCategoryChange = (search, value) => {
   switch (value) {
     case "R":
-      search.id = "3020016000"
+      search.id = "3020050000"
       break
     case "SR":
-      search.id = "3030019000"
+      search.id = "3030242000"
       break
     case "SSR":
-      search.id = "3040040000"
+      search.id = "3040120000"
       break
     case "NPC":
-      search.id = "3050000000"
+      search.id = "3050001000"
       break
     default:
   }
