@@ -17,7 +17,7 @@ tree:
 	tree -I "node_modules|public"
 
 content:
-	cd src/content/
+	mkdir -p src/content
 	curl -H 'Authorization: token ${GITHUB_ACCESS_TOKEN}' \
   -H 'Accept: application/vnd.github.v3.raw' \
   -L https://api.github.com/repos/${OWNER}/${REPO}/contents/${CHARACTERS_PATH} \
