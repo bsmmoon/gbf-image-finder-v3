@@ -15,8 +15,6 @@ import {
   clipboard
 } from "../helpers/fontawesome"
 
-import UrlBuilder from "../helpers/url-builder"
-
 const copyToClipboard = (text) => {
   var dummy = document.createElement("textarea");
   document.body.appendChild(dummy);
@@ -30,9 +28,8 @@ const ImageLoader = ({
   dispatch,
   loading,
   notFound,
-  image
+  url
 }) => {
-  const url = UrlBuilder(image)
   const target = useRef(null)
   const [show, setShow] = useState(false)
   
@@ -76,6 +73,6 @@ const ImageLoader = ({
 export default connect(state => ({
   loading: state.app.loading,
   notFound: state.app.notFound,
-  image: state.app.image
+  url: state.app.url
 }))(ImageLoader)
 

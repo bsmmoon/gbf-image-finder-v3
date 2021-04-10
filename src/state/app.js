@@ -1,3 +1,4 @@
+import UrlBuilder from "../helpers/url-builder"
 
 const DEFAULT_SEARCH = {
   id: "3040120000",
@@ -18,7 +19,7 @@ const initialState = {
   loading: false,
   notFound: false,
   search: JSON.parse(JSON.stringify(DEFAULT_SEARCH)),
-  image: JSON.parse(JSON.stringify(DEFAULT_SEARCH)),
+  url: UrlBuilder(DEFAULT_SEARCH),
   settings: { ...DEFAULT_SETTINGS }
 }
 
@@ -82,7 +83,7 @@ export default (state = initialState, action) => {
 
       if (action.options.load) {
         return { ...state, search,
-          image: search,
+          url: UrlBuilder(search),
           loading: true,
           notFound: false
         }
@@ -91,12 +92,6 @@ export default (state = initialState, action) => {
       } 
     case SET_SETTINGS:
       return { ...state, settings: action.settings }
-    case SET_IMAGE:
-      return { ...state,
-        image: action.search,
-        loading: true,
-        notFound: false,
-      }
     case SET_STATE:
       return { ...state, ...action.state }
     default:
