@@ -1,4 +1,18 @@
+import axios from "axios"
+
 import UrlBuilder from "../helpers/url-builder"
+
+const downloadImage = (search) => {
+  axios.get(UrlBuilder(search), { responseType: "arraybuffer" }).then(response => {
+    const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => {
+      return data + String.fromCharCode(byte)
+    }, " "))
+    setState({
+      search: { ...search, source: `data:;base64,${base64}` },
+      loading: false
+    })
+  })
+}
 
 const DEFAULT_SEARCH = {
   id: "3040120000",
@@ -18,8 +32,10 @@ const initialState = {
   debug: false,
   loading: false,
   notFound: false,
-  search: JSON.parse(JSON.stringify(DEFAULT_SEARCH)),
-  url: UrlBuilder(DEFAULT_SEARCH),
+  search: { ...DEFAULT_SEARCH,
+    url: UrlBuilder(DEFAULT_SEARCH),
+    source: UrlBuilder(DEFAULT_SEARCH),
+  },
   settings: { ...DEFAULT_SETTINGS }
 }
 
@@ -82,6 +98,7 @@ export default (state = initialState, action) => {
       let search = action.search
 
       if (action.options.load) {
+        downloadImage(state.search)
         return { ...state, search,
           url: UrlBuilder(search),
           loading: true,

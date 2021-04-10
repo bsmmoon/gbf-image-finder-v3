@@ -28,7 +28,8 @@ const ImageLoader = ({
   dispatch,
   loading,
   notFound,
-  url
+  url,
+  source,
 }) => {
   const target = useRef(null)
   const [show, setShow] = useState(false)
@@ -36,7 +37,7 @@ const ImageLoader = ({
   return <div>
     <Image
       alt=""
-      src={url}
+      src={source}
       onLoad={() => dispatch(setLoading(false))}
       onError={() => dispatch(setNotFound(true))}
     />
@@ -73,6 +74,7 @@ const ImageLoader = ({
 export default connect(state => ({
   loading: state.app.loading,
   notFound: state.app.notFound,
-  url: state.app.url
+  url: state.app.url,
+  source: state.app.source,
 }))(ImageLoader)
 
