@@ -37,20 +37,6 @@ const ImageLoader = ({
   const [show, setShow] = useState(false)
   
   return <div>
-    <Image
-      alt=""
-      src={url}
-      onLoad={() => dispatch(setLoading(false))}
-      onError={() => dispatch(setNotFound(true))}
-    />
-    <Spinner
-      hidden={!loading}
-      className="float-right"
-      animation="border"
-      size="sm"
-    >
-      <span className="sr-only"/>
-    </Spinner>
     <div className="float-right">
       <div hidden={!notFound}>Not Found!</div>
       <div hidden={notFound || loading}
@@ -70,6 +56,20 @@ const ImageLoader = ({
         )}
       </Overlay>
     </div>
+    <Spinner
+      hidden={!loading}
+      className="float-right"
+      animation="border"
+      size="sm"
+    >
+      <span className="sr-only"/>
+    </Spinner>
+    <Image
+      alt=""
+      src={url}
+      onLoad={() => dispatch(setLoading(false))}
+      onError={() => dispatch(setNotFound(true))}
+    />
   </div>
 }
 
