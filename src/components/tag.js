@@ -18,7 +18,7 @@ import Tags from "../content/tags.json"
 
 import _ from "lodash"
 
-const Character = ({
+const Tag = ({
   dispatch,
   search,
   settings,
@@ -34,7 +34,7 @@ const Character = ({
         <option value="default">default</option>
         {
           _.map(Tags.list, (tag) => (
-            <option value={tag}>
+            <option value={tag} key={tag}>
              {tag}
             </option>
           ))
@@ -65,5 +65,5 @@ const Character = ({
 export default connect(state => ({
   search: state.app.search,
   settings: state.app.settings,
-}), null)(Character)
+}), null)(Tag)
 

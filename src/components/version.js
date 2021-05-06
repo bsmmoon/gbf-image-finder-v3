@@ -16,7 +16,7 @@ import InputGroup from "react-bootstrap/InputGroup"
 
 import _ from "lodash"
 
-const Uncap = ({
+const Version = ({
   dispatch,
   search,
 }) => (
@@ -28,7 +28,7 @@ const Uncap = ({
         value={search.version}
         onChange={handleChange.bind(this, dispatch, search)}
       >{_.map(versions, (version) =>
-        <option value={version.value}
+        <option value={version.value} key={version.value}
           >{version.label}</option>)
       }</Form.Control>
       &nbsp;
@@ -49,5 +49,5 @@ const Uncap = ({
 
 export default connect(state => ({
   search: state.app.search,
-}), null)(Uncap)
+}), null)(Version)
 

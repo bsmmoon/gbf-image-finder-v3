@@ -33,7 +33,7 @@ const Character = ({
         value={search.id}
         onChange={handleChange.bind(this, dispatch, search)}
       >{_.map(characters(search.category, settings.sortById), (character) =>
-          <option value={character.id}>
+          <option value={character.id} key={character.id}>
            {character.name}
           </option>
         )}

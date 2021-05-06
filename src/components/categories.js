@@ -13,7 +13,7 @@ import Form from "react-bootstrap/Form"
 
 import _ from "lodash"
 
-const Rarity = ({
+const Categories = ({
   dispatch,
   search,
 }) => (
@@ -24,7 +24,7 @@ const Rarity = ({
       defaultValue={search.category}
       onChange={handleChange.bind(this, dispatch, search)}
     >{
-      _.map(categories, category => <option>{category}</option>)
+      _.map(categories, category => <option key={category}>{category}</option>)
     }
     </Form.Control>
   </Form.Group>
@@ -32,5 +32,5 @@ const Rarity = ({
 
 export default connect(state => ({
   search: state.app.search,
-}), null)(Rarity)
+}), null)(Categories)
 
