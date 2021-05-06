@@ -8,7 +8,7 @@ server-hot:
 
 server:
 	gatsby build
-	gatsby serve -p 3000 &
+	gatsby serve -p $(PORT) &
 
 kill:
 	kill -9 ${shell lsof -ti :$(PORT)}
