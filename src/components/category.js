@@ -13,7 +13,7 @@ import Form from "react-bootstrap/Form"
 
 import _ from "lodash"
 
-const Categories = ({
+const Category = ({
   dispatch,
   search,
 }) => (
@@ -32,5 +32,5 @@ const Categories = ({
 
 export default connect(state => ({
   search: state.app.search,
-}), null)(Categories)
+}), null)(Category)
 

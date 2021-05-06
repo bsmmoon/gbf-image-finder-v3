@@ -5,7 +5,7 @@ import {
   toggleDialogue,
 } from "../helpers/search-helper"
 
-import Categories from "./categories"
+import Category from "./category"
 import Character from "./character"
 import CharacterId from "./character-id"
 import Version from "./version"
@@ -31,7 +31,7 @@ const ImageFinder = ({
     </Form.Group>
 
     <div hidden={settings.searchById}>
-      <Categories />
+      <Category />
       <Character />
     </div>
 
