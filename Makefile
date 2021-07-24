@@ -13,6 +13,16 @@ server:
 kill:
 	kill -9 ${shell lsof -ti :$(PORT)}
 
+build:
+	make content
+	gatsby build
+
+preview:
+	firebase hosting:channel:deploy preview
+
+deploy:
+	firebase deploy
+
 tree:
 	tree -I "node_modules|public"
 
