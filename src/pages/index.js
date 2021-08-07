@@ -9,7 +9,7 @@ import Debug from "../components/debug"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO />
     <ImageFinder />
     <ImageLoader />
     <Debug/>
