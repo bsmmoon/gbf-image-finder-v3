@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Granblue Fantasy Image Finder v3`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Find the images from Granblue Fantasy more easily! This is the new version of the good-ol gbf-image-finder.`,
+    author: `@bsmoonmoon`,
+    keywords: "granblue fantasy, gbf, granblue fantasy image finder, gbf image finder, granblue image finder, gbf-image-finder"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
