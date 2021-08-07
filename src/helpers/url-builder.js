@@ -5,7 +5,8 @@
  * Characters:
  * http://game-a.granbluefantasy.jp/assets_en/img/sp/assets/npc/zoom/3040053000_01.png
  */
-const HOST="http://game-a.granbluefantasy.jp"
+// const HOST="http://game-a.granbluefantasy.jp"
+const HOST=process.env.IMAGE_PROXY_URL
 const REGION_JP="assets"
 // const REGION_EN="assets_en"
 const TYPE_DIALOGUE="quest/scene/character/body"
