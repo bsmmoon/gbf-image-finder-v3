@@ -7,12 +7,20 @@ import ImageFinder from "../components/image-finder"
 import ImageLoader from "../components/image-loader"
 import Debug from "../components/debug"
 
+function Development(props) {
+  const development = props.isDevelopment 
+  if (development) {
+    return <Debug />
+  }
+  return <span />
+}
+
 const IndexPage = () => (
   <Layout>
     <SEO />
     <ImageFinder />
     <ImageLoader />
-    <Debug/>
+    <Development isDevelopment={process.env.NODE_ENV == "development"}/>
   </Layout>
 )
 

@@ -3,12 +3,8 @@
 install:
 	npm install
 
-server-hot:
+start:
 	PORT=$(PORT) gatsby develop &
-
-server:
-	gatsby build
-	gatsby serve -p $(PORT) &
 
 kill:
 	kill -9 ${shell lsof -ti :$(PORT)}
@@ -38,4 +34,5 @@ content:
   -L https://api.github.com/repos/${OWNER}/${REPO}/contents/${TAGS_PATH} \
 	-o src/content/tags.json
 
-
+then:
+	sleep 1

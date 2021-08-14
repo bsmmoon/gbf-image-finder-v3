@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Granblue Fantasy Image Finder v3`,
@@ -24,9 +28,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-gtag",
+      options: {
+        trackingId: process.env.TRACKING_ID,
+        head: false,
+        anonymize: true,
+      }
+    }
   ],
 }
 
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
