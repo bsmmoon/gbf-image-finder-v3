@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import ImageFinder from "../components/image-finder"
 import ImageLoader from "../components/image-loader"
 import Debug from "../components/debug"
+import About from "../components/about"
 
 function Development(props) {
   const development = props.isDevelopment 
@@ -20,6 +21,7 @@ const IndexPage = () => (
     <SEO />
     <ImageFinder />
     <ImageLoader />
+    <About />
     <Development isDevelopment={process.env.NODE_ENV === "development"}/>
   </Layout>
 )
