@@ -6,7 +6,7 @@ https://gbf-image-finder.com/
 ## About
 This website is to help you find images from Granblue Fantasy with various expressions and such in a better way.
 
-All images found in this website belongs to Cygames. This website does not store any of the images and simply relay and display to the user. Please do not abuse this website (ex. aggressive scraping).
+All images found in this website belongs to Cygames. This website does not store any of the images and simply relay and display the images to the user. Please do not abuse this website (ex. aggressive scraping).
 
 ![alt text](http://game-a.granbluefantasy.jp/assets/img/sp/quest/scene/character/body/3040120000_laugh.png)
 
