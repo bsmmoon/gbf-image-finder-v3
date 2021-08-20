@@ -20,7 +20,7 @@ const IndexPage = () => (
     <SEO />
     <ImageFinder />
     <ImageLoader />
-    <Development isDevelopment={process.env.NODE_ENV == "development"}/>
+    <Development isDevelopment={process.env.NODE_ENV === "development"}/>
   </Layout>
 )
 

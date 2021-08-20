@@ -5,7 +5,7 @@
  * Characters:
  * http://game-a.granbluefantasy.jp/assets_en/img/sp/assets/npc/zoom/3040053000_01.png
  */
-// const HOST="http://game-a.granbluefantasy.jp"
+const ORIGIN_HOST="game-a.granbluefantasy.jp"
 const HOST=process.env.IMAGE_PROXY_URL
 const REGION_JP="assets"
 // const REGION_EN="assets_en"
@@ -13,9 +13,11 @@ const TYPE_DIALOGUE="quest/scene/character/body"
 const TYPE_PLAYABLE="assets/npc/zoom"
 const EXTENSION_PNG="png"
 
-const UrlBuilder = (image) => { 
-  return `${HOST}/${REGION_JP}/img/sp/${image.dialogue ? dialogue(image) : playable(image)
-}.${EXTENSION_PNG}`
+const UrlBuilder = (image) => {
+  const link = `${REGION_JP}/img/sp/${image.dialogue ? dialogue(image) : playable(image)}.${EXTENSION_PNG}`
+  const URL =`${HOST}/${link}`
+  const ORIGIN_URL = `${ORIGIN_HOST}/${link}`
+  return { URL, ORIGIN_URL }
 }
 
 const dialogue = (image) => {

@@ -32,7 +32,7 @@ const ImageLoader = ({
   notFound,
   image
 }) => {
-  const url = UrlBuilder(image)
+  const { URL, ORIGIN_URL } = UrlBuilder(image)
   const target = useRef(null)
   const [show, setShow] = useState(false)
   
@@ -43,7 +43,7 @@ const ImageLoader = ({
         role="button" tabIndex={0}
         ref={target}
         onClick={() => {
-          copyToClipboard(url)
+          copyToClipboard(ORIGIN_URL)
           setShow(!show)
         }}
         onKeyUp={()=>{}}
@@ -66,7 +66,7 @@ const ImageLoader = ({
     </Spinner>
     <Image
       alt=""
-      src={url}
+      src={URL}
       onLoad={() => dispatch(setLoading(false))}
       onError={() => dispatch(setNotFound(true))}
     />
