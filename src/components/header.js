@@ -9,7 +9,7 @@ const Header = () => (
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossOrigin="anonymous"
 />
-    <h6 style={{color: "grey"}}>Granblue Fantasy Image Finder v3</h6>
+    <h6 style={{color: "grey"}}>Granblue Fantasy Image Finder v3 (beta)</h6>
   </header>
 )
 
