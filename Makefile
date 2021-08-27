@@ -11,7 +11,7 @@ kill:
 
 build:
 	make content
-	gatsby build
+	npm run build
 
 preview:
 	firebase hosting:channel:deploy preview

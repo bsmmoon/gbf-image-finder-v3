@@ -1,0 +1,33 @@
+version: 2
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/node:16.2.0
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install
+          command: make install
+      - run:
+          name: Install Gatsby
+          command: npm ci gatsby-cli
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build
+          command: make build
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT"
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy
