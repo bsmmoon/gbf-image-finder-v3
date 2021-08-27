@@ -30,6 +30,10 @@ make install
 ```
 
 ### Firebase CLI setup
+```
+firebase login
+firebase init hosting
+```
 Make sure to say NO to .html overwrites
 
 ### Development server nginx setup
