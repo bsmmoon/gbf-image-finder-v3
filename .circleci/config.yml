@@ -10,11 +10,15 @@ jobs:
       - restore_cache:
           key: v1-deps-{{ checksum "package-lock.json" }}
       - run:
+          name: ENV for Build
+          command: |
+            touch .env.production
+            echo "IMAGE_PROXY_ENDPOINT=${IMAGE_PROXY_ENDPOINT}" >> .env.production
+            echo "ABOUT=${ABOUT}" >> .env.production
+            echo "TRACKING_ID=${TRACKING_ID}" >> .env.production
+      - run:
           name: Install
           command: make install
-      - run:
-          name: Install Gatsby
-          command: npm ci gatsby-cli
       - save_cache:
           key: v1-deps-{{ checksum "package-lock.json" }}
           paths:
